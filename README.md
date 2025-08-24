@@ -103,6 +103,17 @@ Follow these steps to configure Google Drive and Docs API:
 
 ---
 
+## Google Credentials Folder
+
+This folder is intended to store your Google OAuth credentials locally. **Do not commit your credentials.json or token.json** to GitHub.
+
+Place your files here:
+
+- `credentials.json` — downloaded from Google Cloud Console
+- `token.json` — automatically generated after first run
+
+.gitignore already ignores these files.
+
 ## Notion API Setup
 
 1. **Create a Notion Integration**:

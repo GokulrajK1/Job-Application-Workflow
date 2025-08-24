@@ -46,8 +46,8 @@ Before you begin, ensure you have the following installed:
 1. **Clone the repository**:
 
 ```bash
-git clone <repository_url>
-cd <repository_folder>
+git clone https://github.com/GokulrajK1/Job-Application-Workflow.git
+cd .\Job-Application-Workflow\
 ```
 
 2. **Set up a virtual environment**:

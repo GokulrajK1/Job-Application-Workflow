@@ -197,7 +197,9 @@ def generate_help_string(resume_paths):
 def main():
     # Edit Config
     with open("config/config.json", "r") as file:
-        config = json.load(file)
+        data = file.read()
+        data = data.replace("\\", "\\\\")
+        config = json.loads(data)
   
     os.makedirs(config["cover_letter_paths"]["cover_letter_download_folder_path"], exist_ok=True)
     

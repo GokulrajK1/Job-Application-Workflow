@@ -1,0 +1,4 @@
+google_creds/credentials.json
+venv
+config/config.json
+google_creds/token.json

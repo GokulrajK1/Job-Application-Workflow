@@ -1,0 +1,34 @@
+{
+    "applicant_details" : {
+        "first_name" : "Your First Name",
+        "last_name" : "Your Last Name",
+        "default_role" : "Default Role You're Applying To"
+    },
+    
+    "cover_letter_paths" : {
+        "cover_letter_download_folder_path" : "/path/to/the/folder/to/download/cover/letter/pdf/into",
+        "cover_letter_paste_text_file" : "/path/to/txt/file/that/cover/letter/will/be/pasted/into.txt"
+     },
+
+    "resume_paths" : [
+        {
+            "role_type" : "Role Type 1",
+            "path" : "/path/to/resume/for/role/type/one.pdf"
+        },
+        {
+            "role_type" : "Role Type 2",
+            "path" : "/path/to/resume/for/role/type/two.pdf"
+        }
+    ],
+
+    "google_drive" : {
+        "application_folder_id" : "google_drive_application_folder_id",
+        "token_file_path" : "/path/to/token/file.json",
+        "credentials_file_path" : "/path/to/credentials/file.json"
+    },
+
+    "notion" : {
+        "api_key" : "notion_api_key",
+        "database_id" : "notion_database_id"
+    }
+}

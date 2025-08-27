@@ -133,6 +133,9 @@ def upload_job_app_to_google_drive(job_application : JobApplication, config : di
         fields='id'
     ).execute()
 
+    with open(config["cover_letter_paths"]["cover_letter_paste_text_file"], "w") as file:
+        file.write("")
+
     print(f"✅ Uploaded Resume: {uploaded_pdf.get('id')}")
     
 def upload_job_app_to_notion(job_application : JobApplication, config : dict):

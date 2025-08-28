@@ -35,7 +35,7 @@ def get_google_api_services(config):
     docs_service = build('docs', 'v1', credentials=creds)
     return drive_service, docs_service
 
-def upload_job_app_to_google_drive(job_application : JobApplication, config : dict):
+def upload_job_app_to_google_drive(job_application : JobApplication, config : dict, save_cover_letter : bool):
     drive_service, docs_service = get_google_api_services(config)
     application_folder_id = config["google_drive"]["application_folder_id"]
     
@@ -133,8 +133,9 @@ def upload_job_app_to_google_drive(job_application : JobApplication, config : di
         fields='id'
     ).execute()
 
-    with open(config["cover_letter_paths"]["cover_letter_paste_text_file"], "w") as file:
-        file.write("")
+    if not save_cover_letter:
+        with open(config["cover_letter_paths"]["cover_letter_paste_text_file"], "w") as file:
+            file.write("")  
 
     print(f"✅ Uploaded Resume: {uploaded_pdf.get('id')}")
     
@@ -220,6 +221,7 @@ def main():
     parser.add_argument("--role", help="Role that is being applied to", default=config["applicant_details"]["default_role"], required=False)
     parser.add_argument("--resume", type=int, choices=list(range(len(resume_paths))), default=0, help=generate_help_string(resume_paths), required=False)
     parser.add_argument("--referral", type=int, choices=[0, 1], default=0, help="0 = No Referral, 1 = Referral", required=False)
+    parser.add_argument("--save_cover_letter", help="0 = Cover Letter is Not Saved, 1 = Cover Letter is Saved", type=int, choices = [0,1], default=0, required=False)
     args = parser.parse_args()
     
     job_application = JobApplication(company=args.company,
@@ -228,7 +230,7 @@ def main():
                                      referral=args.referral,
                                     )
     
-    upload_job_app_to_google_drive(job_application, config)
+    upload_job_app_to_google_drive(job_application, config, bool(args.save_cover_letter))
     upload_job_app_to_notion(job_application, config)
     
     print(f"✅ Successfully uploaded job application for {args.company} - {args.role} ✅")
